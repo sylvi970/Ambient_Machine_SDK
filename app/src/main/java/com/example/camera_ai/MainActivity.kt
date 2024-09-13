@@ -63,15 +63,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
-        } else {
-            Toast.makeText(this, "No camera app found", Toast.LENGTH_SHORT).show()
-        }
+        val intent = Intent(this, CustomCameraActivity::class.java)
+        startActivity(intent)
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
